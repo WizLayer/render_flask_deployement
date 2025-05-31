@@ -4,19 +4,21 @@ from pydantic import BaseModel
 import joblib
 import pickle
 import numpy as np
-from nltk.stem import WordNetLemmatizer
-import nltk
+# from nltk.stem import WordNetLemmatizer
+# import nltk
 
-nltk.download('wordnet')
+# nltk.download('wordnet')
 
 app = Flask(__name__)
 CORS(app)
 
-class LemmaTokenizer:
-    def __init__(self):
-        self.wnl = WordNetLemmatizer()
-    def __call__(self, doc):
-        return [self.wnl.lemmatize(t) for t in doc.split()]
+# class LemmaTokenizer:
+#     def __init__(self):
+#         self.wnl = WordNetLemmatizer()
+#     def __call__(self, doc):
+#         return [self.wnl.lemmatize(t) for t in doc.split()]
+    
+from tokenizer import LemmaTokenizer
 
 model = joblib.load('activity_pipeline.pkl')
 
